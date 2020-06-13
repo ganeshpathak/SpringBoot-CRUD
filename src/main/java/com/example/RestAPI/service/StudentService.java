@@ -1,28 +1,43 @@
 package com.example.RestAPI.service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
 import com.example.RestAPI.dao.Student;
 import org.springframework.stereotype.Service;
 
 @Service
 public class StudentService {
 
-    private static ArrayList<Student> students = new ArrayList<>();
+    private static Map<Integer, Student> students = new HashMap<>();
 
     static {
-        students.add(new Student(1,"Ganesh","Pune"));
-        students.add(new Student(2,"Amay","Mumbai"));
+        students.put(1, new Student(1,"Ganesh","Pune"));
+        students.put(2, new Student(2,"Amay","Mumbai"));
+        students.put(3, new Student(3,"Dinesh","Nashik"));
+        students.put(4, new Student(4,"Praveen","Thane"));
     };
 
-    public List<Student> getStudents(){
-        return StudentService.students;
+    public Collection<Student> getStudents(){
+        return StudentService.students.values();
     }
 
     public Student getStudentById(int studentId){
-        return StudentService.students.stream().
-                filter( stud -> studentId == stud.getId())
-                .findFirst()
-                .get();
+        return StudentService.students.get(studentId);
+    }
+
+    public String addStudent(Student student)
+    {
+        StudentService.students.put(student.getId(), student);
+        return "Student added successfully";
+    }
+
+    public String updateStudent(Student student)
+    {
+        StudentService.students.put(student.getId(), student);
+        return "Student updated successfully";
+    }
+
+    public Student removeStudentById(int studentId){
+        return StudentService.students.remove(studentId);
     }
 }
