@@ -7,9 +7,13 @@ I am not using any database here.
 I am using Map to perform CRUD operations on Data.
 
 GET: http://localhost:8080/students
+
 GET: http://localhost:8080/students/1
+
 POST: http://localhost:8080/students
+
 PUT: http://localhost:8080/students
+
 DELETE: http://localhost:8080/students/1
 
 Postman collection : https://www.getpostman.com/collections/79b34e5606d66d88881e
