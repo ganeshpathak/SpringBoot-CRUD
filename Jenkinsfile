@@ -16,6 +16,7 @@ pipeline {
 
             steps {
                 echo 'testing the application ... step 2'
+                 echo 'Updated this file to check polling'
             }
         }
 
